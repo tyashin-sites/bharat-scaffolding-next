@@ -182,31 +182,43 @@ export const offices = [
     city: 'Delhi',
     label: 'Head Office',
     address: 'DSO-309, 3rd Floor, DLF South Court, Saket, New Delhi – 110017',
+    lat: 28.528,
+    lng: 77.2175,
   },
   {
     city: 'Gurugram',
     label: '',
     address: 'Darbaripur Road, Kherki Daula, Gurugram, Haryana – 122101',
+    lat: 28.4043,
+    lng: 76.9838,
   },
   {
     city: 'Mohali',
     label: '',
     address: 'P. No. 1057, JLPL, Sec-82, Mohali, Punjab – 140306',
+    lat: 30.655,
+    lng: 76.733,
   },
   {
     city: 'Bengaluru',
     label: '',
     address: 'Sy. No. 72, Vijayapura Road, Devanahalli, Bengaluru, Karnataka – 562110',
+    lat: 13.2569,
+    lng: 77.7273,
   },
   {
     city: 'Mumbai',
     label: '',
     address: 'Sy. No. 25/1, Kolkhe, Panvel, Raigad, Maharashtra – 410221',
+    lat: 18.9895,
+    lng: 73.1222,
   },
   {
     city: 'Ahmedabad',
     label: '',
     address: 'Sy. No. 189/2, Sanand, Ahmedabad, Gujarat – 382170',
+    lat: 23.0239,
+    lng: 72.3852,
   },
 ];
 

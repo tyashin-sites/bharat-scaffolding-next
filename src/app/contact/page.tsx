@@ -1,9 +1,10 @@
-import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle, Navigation } from 'lucide-react';
 import { JsonLd } from '@/components/JsonLd';
 import { Reveal } from '@/components/Reveal';
 import { pageMetadata } from '@/lib/seo';
 import { siteConfig } from '@/config/site';
 import { offices } from '@/data/company';
+import { OfficesMap } from '@/components/OfficesMap';
 import { ContactForm } from './ContactForm';
 
 export const metadata = pageMetadata({
@@ -99,6 +100,13 @@ export default function ContactPage() {
           <Reveal className="mb-10">
             <p className="eyebrow mb-3">Pan-India presence</p>
             <h2 className="text-2xl font-extrabold md:text-3xl">Offices & depots</h2>
+            <p className="text-muted-foreground mt-2 max-w-2xl">
+              Zoom into any pin, or open a balloon for the full address and one-tap Google Maps
+              directions.
+            </p>
+          </Reveal>
+          <Reveal className="mb-12">
+            <OfficesMap />
           </Reveal>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {offices.map((o, i) => (
@@ -116,6 +124,14 @@ export default function ContactPage() {
                     </h3>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">{o.address}</p>
+                  <a
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(o.address)}`}
+                    target="_blank"
+                    rel="noopener"
+                    className="text-primary mt-3 inline-flex items-center gap-1.5 text-sm font-semibold hover:underline"
+                  >
+                    <Navigation className="h-3.5 w-3.5" /> Get directions
+                  </a>
                 </div>
               </Reveal>
             ))}
