@@ -19,10 +19,17 @@ export async function Footer({ hasBlog = false }: { hasBlog?: boolean }) {
   const links = hasBlog ? [...companyLinks, { href: '/blog', label: 'Blog' }] : companyLinks;
 
   // Footer = the link-mesh safety net: every product page gets an inbound link.
-  const productsByGroup = PRODUCT_GROUPS.map((group) => ({
-    group,
-    items: products.filter((p) => p.group === group),
-  }));
+  // Groups are paired into two explicit columns that stack compactly — a plain
+  // 2-col grid stretches rows to the tallest group and leaves a large gap
+  // under the short Cuplock column.
+  const byGroup = (g: (typeof PRODUCT_GROUPS)[number]) => ({
+    group: g,
+    items: products.filter((p) => p.group === g),
+  });
+  const productColumns = [
+    [byGroup('Cuplock System'), byGroup('Access & Safety')],
+    [byGroup('Shuttering & Formwork'), byGroup('Components')],
+  ];
 
   return (
     <footer className="bg-charcoal steel-grid text-white/85">
@@ -72,24 +79,28 @@ export async function Footer({ hasBlog = false }: { hasBlog?: boolean }) {
             <h4 className="font-display mb-4 text-sm font-bold uppercase tracking-[0.15em] text-white">
               Products
             </h4>
-            <div className="grid grid-cols-1 gap-x-8 gap-y-1 sm:grid-cols-2">
-              {productsByGroup.map(({ group, items }) => (
-                <div key={group} className="mb-3">
-                  <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-white/40">
-                    {group}
-                  </p>
-                  <ul className="space-y-1.5">
-                    {items.map((p) => (
-                      <li key={p.slug}>
-                        <Link
-                          href={`/products/${p.slug}`}
-                          className="hover:text-primary-foreground text-sm text-white/60 transition-colors hover:text-white"
-                        >
-                          {p.shortName}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+            <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2">
+              {productColumns.map((column, ci) => (
+                <div key={ci} className="space-y-6">
+                  {column.map(({ group, items }) => (
+                    <div key={group}>
+                      <p className="mb-1.5 text-xs font-semibold uppercase tracking-wider text-white/40">
+                        {group}
+                      </p>
+                      <ul className="space-y-1.5">
+                        {items.map((p) => (
+                          <li key={p.slug}>
+                            <Link
+                              href={`/products/${p.slug}`}
+                              className="hover:text-primary-foreground text-sm text-white/60 transition-colors hover:text-white"
+                            >
+                              {p.shortName}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>

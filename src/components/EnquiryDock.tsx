@@ -19,8 +19,10 @@ export function EnquiryDock() {
   }, []);
 
   return (
+    // Bottom-LEFT: the platform-injected chatbot widget owns the bottom-right
+    // corner — sharing it stacks the bubbles on top of each other.
     <div
-      className={`fixed bottom-5 right-5 z-40 flex flex-col gap-3 transition-all duration-300 ${
+      className={`fixed bottom-5 left-5 z-40 flex flex-col gap-3 transition-all duration-300 ${
         visible ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
     >
