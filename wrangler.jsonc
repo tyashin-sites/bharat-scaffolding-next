@@ -1,0 +1,18 @@
+{
+  "name": "site-bharat-scaffolding-next",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    { "binding": "NEXT_INC_CACHE_KV", "id": "95e5b6a22f844a18a3f9613a34ae8aa0" }
+  ],
+  "vars": {
+    "TYASHIN_API_URL": "https://website-api.tyashin.com",
+    "NEXT_PUBLIC_SITE_DOMAIN": "preetbharat.com",
+    "ROBOTS_NOINDEX": "true"
+  }
+}

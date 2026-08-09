@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Bharat Scaffolding — oxide brick + charcoal + warm paper (DESIGN-SPEC).
+       Raw HSL triples; Tailwind wraps them in hsl(var(--x)) (CLAUDE.md §5). */
+    --background: 36 33% 97%; /* #FAF8F5 paper */
+    --foreground: 24 8% 12%; /* #211E1C charcoal */
+
+    --card: 0 0% 100%;
+    --card-foreground: 24 8% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 24 8% 12%;
+
+    --primary: 4 62% 37%; /* #9B2C24 brick */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 24 4% 23%; /* #3D3A38 steel */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 33 20% 93%;
+    --muted-foreground: 27 5% 40%; /* #6B6560 */
+
+    --accent: 4 62% 37%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 33 17% 87%; /* #E4DFD9 */
+    --input: 33 17% 87%;
+    --ring: 4 62% 37%;
+
+    --radius: 0.25rem;
+
+    /* Custom tokens */
+    --brick: 4 62% 37%;
+    --brick-deep: 4 66% 29%; /* #7A1F19 hover */
+    --brick-tint: 5 45% 95%;
+    --charcoal: 24 8% 12%;
+    --steel: 24 4% 23%;
+    --paper: 36 33% 97%;
+    --paper-line: 33 17% 87%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Section label — small caps brick eyebrow above headings */
+  .eyebrow {
+    @apply font-display text-xs font-bold uppercase tracking-[0.2em] text-primary;
+  }
+
+  .eyebrow-light {
+    @apply font-display text-xs font-bold uppercase tracking-[0.2em] text-primary-foreground/70;
+  }
+
+  /* Engineered steel-grid texture for dark sections */
+  .steel-grid {
+    background-image:
+      repeating-linear-gradient(0deg, hsl(0 0% 100% / 0.04) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(90deg, hsl(0 0% 100% / 0.04) 0 1px, transparent 1px 64px);
+  }
+
+  /* Blueprint-style grid for light sections */
+  .paper-grid {
+    background-image:
+      repeating-linear-gradient(0deg, hsl(var(--paper-line) / 0.55) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, hsl(var(--paper-line) / 0.55) 0 1px, transparent 1px 48px);
+  }
+
+  /* Reveal-on-scroll primitive (driven by useReveal hook). */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.55s ease-out,
+      transform 0.55s ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Client-name marquee */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 42s linear infinite;
+  }
+
+  .marquee:hover {
+    animation-play-state: paused;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-rise {
+  opacity: 0;
+  animation: hero-rise 0.7s ease-out forwards;
+  animation-delay: var(--rise-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .hero-rise {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .marquee {
+    animation: none;
+  }
+}

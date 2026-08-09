@@ -1,0 +1,26 @@
+{
+  "projectId": "6a78f8580d4336cd5bf428be",
+  "projectSlug": "bharat-scaffolding",
+  "workerScriptName": "site-bharat-scaffolding-next",
+  "framework": "nextjs",
+  "pages": [
+    "/",
+    "/products",
+    "/products/[slug]",
+    "/projects",
+    "/about",
+    "/catalog",
+    "/contact",
+    "/blog",
+    "/blog/[slug]",
+    "/terms-and-conditions",
+    "/privacy-policy"
+  ],
+  "tyashinOwnedRoutes": [
+    "/brand-kit.css",
+    "/tyashin-runtime.js",
+    "/sitemap.xml",
+    "/robots.txt",
+    "/blog/rss.xml"
+  ]
+}
