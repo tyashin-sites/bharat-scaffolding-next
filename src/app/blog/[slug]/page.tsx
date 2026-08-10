@@ -77,7 +77,7 @@ export default async function BlogPostPage({
           {/* Back Link */}
           <a
             href="/blog"
-            className="text-primary hover:text-coral-dark mb-8 inline-flex items-center gap-2 font-medium transition-colors"
+            className="text-primary hover:text-brick-deep mb-8 inline-flex items-center gap-2 font-medium transition-colors"
           >
             <ChevronLeft className="h-5 w-5" />
             Back to Blog
@@ -86,7 +86,7 @@ export default async function BlogPostPage({
           <article className="mx-auto max-w-3xl">
             {/* Featured Image */}
             {post.featuredImage && (
-              <div className="mb-8 overflow-hidden rounded-3xl">
+              <div className="mb-8 overflow-hidden rounded-md">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={post.featuredImage} alt={post.title} className="h-auto w-full" />
               </div>
@@ -140,7 +140,7 @@ export default async function BlogPostPage({
                   <a
                     key={p.slug}
                     href={`/blog/${p.slug}`}
-                    className="bg-card shadow-soft hover:shadow-medium group block overflow-hidden rounded-3xl transition-all duration-500 hover:-translate-y-2"
+                    className="bg-card border-border hover:border-primary group block overflow-hidden rounded-md border transition-all duration-300 hover:-translate-y-1"
                   >
                     {p.featuredImage ? (
                       <div className="aspect-[16/9] overflow-hidden">
@@ -152,8 +152,8 @@ export default async function BlogPostPage({
                         />
                       </div>
                     ) : (
-                      <div className="bg-teal-light flex aspect-[16/9] items-center justify-center">
-                        <span className="text-6xl">📖</span>
+                      <div className="bg-brick-tint text-primary flex aspect-[16/9] items-center justify-center font-display text-sm font-bold uppercase tracking-[0.2em]">
+                        Bharat Scaffolding
                       </div>
                     )}
                     <div className="p-6">

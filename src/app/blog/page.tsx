@@ -7,7 +7,7 @@ import { JsonLd } from '@/components/JsonLd';
 export const dynamic = 'force-dynamic';
 
 const description =
-  'Tips, tutorials, and insights about AR learning and early childhood education.';
+  'Guides and insights on scaffolding, shuttering and formwork — from the Bharat Scaffolding team.';
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
@@ -50,13 +50,13 @@ export default async function BlogIndexPage({
         breadcrumb={[{ name: 'Blog', path: '/blog' }]}
       />
       {/* Hero */}
-      <section className="gradient-hero py-24">
+      <section className="steel-grid bg-charcoal py-20 text-white">
         <div className="container mx-auto text-center">
-          <h1 className="font-display text-foreground mb-6 text-4xl font-bold md:text-5xl lg:text-6xl">
-            Our <span className="text-primary">Blog</span>
+          <h1 className="font-display mb-6 text-4xl font-extrabold md:text-5xl">
+            Our <span className="text-[hsl(4_75%_62%)]">Blog</span>
           </h1>
-          <p className="text-muted-foreground mx-auto max-w-2xl text-lg md:text-xl">
-            Discover tips, tutorials, and insights about AR learning and early childhood education.
+          <p className="mx-auto max-w-2xl text-lg text-white/70">
+            Guides and insights on scaffolding, shuttering, formwork and safe construction — from 45+ years in the field.
           </p>
         </div>
       </section>
@@ -69,7 +69,7 @@ export default async function BlogIndexPage({
               <a
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="bg-card shadow-soft hover:shadow-medium group block overflow-hidden rounded-3xl transition-all duration-500 hover:-translate-y-2"
+                className="bg-card border-border hover:border-primary group block overflow-hidden rounded-md border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_-16px_hsl(4_62%_37%/0.35)]"
               >
                 {post.featuredImage ? (
                   <div className="aspect-[16/9] overflow-hidden">
@@ -81,13 +81,11 @@ export default async function BlogIndexPage({
                     />
                   </div>
                 ) : (
-                  <div className="bg-coral-light flex aspect-[16/9] items-center justify-center">
-                    <span className="text-6xl">📖</span>
-                  </div>
+                  <div className="bg-brick-tint text-primary flex aspect-[16/9] items-center justify-center font-display text-sm font-bold uppercase tracking-[0.2em]">Bharat Scaffolding</div>
                 )}
                 <div className="p-6">
                   {post.pinned && (
-                    <span className="bg-accent text-accent-foreground mb-3 inline-block rounded-full px-3 py-1 text-xs font-semibold">
+                    <span className="bg-primary text-primary-foreground mb-3 inline-block rounded-sm px-3 py-1 text-xs font-semibold uppercase tracking-wide">
                       Featured
                     </span>
                   )}
@@ -116,7 +114,7 @@ export default async function BlogIndexPage({
               {page > 1 && (
                 <a
                   href={`?page=${page - 1}`}
-                  className="bg-muted text-muted-foreground hover:bg-coral-light hover:text-coral-dark rounded-full px-5 py-2.5 font-medium transition-colors"
+                  className="bg-muted text-muted-foreground hover:bg-brick-tint hover:text-primary rounded-md px-5 py-2.5 font-medium transition-colors"
                 >
                   Previous
                 </a>
@@ -128,8 +126,8 @@ export default async function BlogIndexPage({
                   aria-current={n === page ? 'page' : undefined}
                   className={`rounded-full px-4 py-2.5 font-medium transition-colors ${
                     n === page
-                      ? 'bg-primary text-primary-foreground shadow-soft'
-                      : 'bg-muted text-muted-foreground hover:bg-coral-light hover:text-coral-dark'
+                      ? 'bg-primary text-primary-foreground'
+                      : 'bg-muted text-muted-foreground hover:bg-brick-tint hover:text-primary'
                   }`}
                 >
                   {n}
@@ -138,7 +136,7 @@ export default async function BlogIndexPage({
               {page < totalPages && (
                 <a
                   href={`?page=${page + 1}`}
-                  className="bg-muted text-muted-foreground hover:bg-coral-light hover:text-coral-dark rounded-full px-5 py-2.5 font-medium transition-colors"
+                  className="bg-muted text-muted-foreground hover:bg-brick-tint hover:text-primary rounded-md px-5 py-2.5 font-medium transition-colors"
                 >
                   Next
                 </a>
