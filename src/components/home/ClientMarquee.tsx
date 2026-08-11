@@ -1,28 +1,32 @@
+import Image from 'next/image';
 import { allClients } from '@/data/company';
 
 /**
- * Client wall marquee — text nameplates only (no logos: usage rights not
- * held; see ASSET-DEBT #4). CSS animation, paused on hover, static under
+ * Client logo marquee — logos as printed on the approved brochure's
+ * "Esteemed Clients" page. CSS animation, paused on hover, static under
  * prefers-reduced-motion.
  */
 export function ClientMarquee() {
   const row = [...allClients, ...allClients];
   return (
-    <section aria-label="Clients" className="border-border border-y bg-white py-8">
-      <div className="container mb-4">
+    <section aria-label="Clients" className="border-border border-y bg-white py-10">
+      <div className="container mb-6">
         <p className="text-muted-foreground text-center text-xs font-semibold uppercase tracking-[0.2em]">
           Trusted on India&apos;s landmark projects
         </p>
       </div>
       <div className="overflow-hidden">
-        <div className="marquee gap-4 pr-4">
-          {row.map((name, i) => (
-            <span
-              key={`${name}-${i}`}
-              className="border-border text-foreground/70 whitespace-nowrap rounded-sm border bg-background px-5 py-2 font-display text-sm font-semibold tracking-wide"
-            >
-              {name}
-            </span>
+        <div className="marquee items-center gap-10 pr-10">
+          {row.map((c, i) => (
+            <Image
+              key={`${c.name}-${i}`}
+              src={c.logo}
+              alt={c.name}
+              width={160}
+              height={64}
+              aria-hidden={i >= allClients.length}
+              className="h-10 w-auto max-w-[150px] object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 md:h-12"
+            />
           ))}
         </div>
       </div>

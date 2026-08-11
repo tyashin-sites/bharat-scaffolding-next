@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { JsonLd } from '@/components/JsonLd';
@@ -6,7 +7,7 @@ import { Reveal } from '@/components/Reveal';
 import { SectionHeading } from '@/components/SectionHeading';
 import { Counter } from '@/components/Counter';
 import { pageMetadata } from '@/lib/seo';
-import { landmarkProjects, clients, secondaryStats, stats } from '@/data/company';
+import { landmarkProjects, clientGroups, secondaryStats, stats } from '@/data/company';
 
 export const metadata = pageMetadata({
   title: 'Landmark Projects & Clients',
@@ -14,12 +15,6 @@ export const metadata = pageMetadata({
     'From the metro corridors of Bengaluru, Chennai and Bhopal to GIFT City, Gwalior Airport and India’s leading industrial facilities — the projects and clients Bharat Scaffolding supports.',
   path: '/projects',
 });
-
-const clientGroups = [
-  { title: 'Metro & government bodies', names: clients.metroAndGovernment },
-  { title: 'National institutions', names: clients.institutions },
-  { title: 'Private sector', names: clients.privateSector },
-];
 
 export default function ProjectsPage() {
   return (
@@ -56,12 +51,23 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {landmarkProjects.map((p, i) => (
               <Reveal key={`${p.name}-${p.location}`} delay={(i % 3) * 80}>
-                <div className="border-border hover:border-primary group h-full rounded-md border bg-card p-7 transition-all duration-300 hover:-translate-y-1">
-                  <p className="eyebrow mb-3">{p.kind}</p>
-                  <h2 className="text-xl font-extrabold">{p.name}</h2>
-                  <p className="text-muted-foreground mt-2 flex items-center gap-1.5 text-sm">
-                    <MapPin className="h-4 w-4" /> {p.location}
-                  </p>
+                <div className="border-border hover:border-primary group h-full overflow-hidden rounded-md border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_-16px_hsl(4_62%_37%/0.35)]">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                    <Image
+                      src={p.image}
+                      alt={`${p.name}, ${p.location} — Bharat Scaffolding project site`}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <p className="eyebrow mb-2">{p.kind}</p>
+                    <h2 className="text-xl font-extrabold">{p.name}</h2>
+                    <p className="text-muted-foreground mt-2 flex items-center gap-1.5 text-sm">
+                      <MapPin className="h-4 w-4" /> {p.location}
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -93,17 +99,24 @@ export default function ProjectsPage() {
           <div className="space-y-10">
             {clientGroups.map((g) => (
               <Reveal key={g.title}>
-                <h3 className="text-muted-foreground mb-4 text-xs font-semibold uppercase tracking-[0.2em]">
+                <h3 className="text-muted-foreground mb-5 text-xs font-semibold uppercase tracking-[0.2em]">
                   {g.title}
                 </h3>
-                <div className="flex flex-wrap gap-3">
-                  {g.names.map((name) => (
-                    <span
-                      key={name}
-                      className="border-border font-display rounded-sm border bg-card px-6 py-3 text-sm font-bold tracking-wide"
+                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+                  {g.clients.map((c) => (
+                    <div
+                      key={c.name}
+                      title={c.name}
+                      className="border-border hover:border-primary flex h-24 items-center justify-center rounded-md border bg-card p-5 transition-colors"
                     >
-                      {name}
-                    </span>
+                      <Image
+                        src={c.logo}
+                        alt={c.name}
+                        width={180}
+                        height={72}
+                        className="max-h-14 w-auto max-w-full object-contain"
+                      />
+                    </div>
                   ))}
                 </div>
               </Reveal>

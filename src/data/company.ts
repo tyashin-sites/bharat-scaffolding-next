@@ -123,29 +123,77 @@ export const rentVsBuy = {
   ],
 };
 
+/**
+ * Landmark projects — names, locations and site photographs taken verbatim
+ * from the approved brochure v6.2 "Landmark Projects" page. Each photo is the
+ * one printed under that project's caption; do not re-pair them.
+ */
 export const landmarkProjects = [
-  { name: 'BMRCL', location: 'Bengaluru', kind: 'Metro rail' },
-  { name: 'CMRL', location: 'Chennai', kind: 'Metro rail' },
-  { name: 'MPMRCL', location: 'Bhopal', kind: 'Metro rail' },
-  { name: 'Gwalior Airport', location: 'Gwalior', kind: 'Aviation' },
-  { name: 'GIFT City', location: 'Gandhinagar', kind: 'Urban infrastructure' },
-  { name: 'Foxconn', location: 'Bengaluru', kind: 'Industrial' },
-  { name: 'Siemens', location: 'Bengaluru', kind: 'Industrial' },
-  { name: 'BWSSB', location: 'Bengaluru', kind: 'Public utility' },
-  { name: 'IOCL', location: 'Chennai', kind: 'Energy' },
+  { name: 'BMRCL', location: 'Bengaluru', kind: 'Metro rail', image: '/projects/bmrcl-bengaluru.jpg' },
+  { name: 'Gwalior Airport', location: 'Gwalior', kind: 'Aviation', image: '/projects/gwalior-airport.jpg' },
+  { name: 'GIFT City', location: 'Gandhinagar', kind: 'Urban infrastructure', image: '/projects/gift-city-gandhinagar.jpg' },
+  { name: 'CMRL', location: 'Chennai', kind: 'Metro rail', image: '/projects/cmrl-chennai.jpg' },
+  { name: 'Foxconn', location: 'Bengaluru', kind: 'Industrial', image: '/projects/foxconn-bengaluru.jpg' },
+  { name: 'BWSSB', location: 'Bengaluru', kind: 'Public utility', image: '/projects/bwssb-bengaluru.jpg' },
+  { name: 'Siemens', location: 'Bengaluru', kind: 'Industrial', image: '/projects/siemens-bengaluru.jpg' },
+  { name: 'MPMRCL', location: 'Bhopal', kind: 'Metro rail', image: '/projects/mpmrcl-bhopal.jpg' },
+  { name: 'IOCL', location: 'Chennai', kind: 'Energy', image: '/projects/iocl-chennai.jpg' },
 ];
 
-export const clients = {
-  metroAndGovernment: ['DMRC', 'BMRCL', 'CMRL', 'MPMRCL', 'NHAI', 'BWSSB'],
-  institutions: ['ISRO', 'Indian Navy', 'HPCL', 'IOCL', 'IIT', 'AIIMS'],
-  privateSector: ['DLF', 'M3M', 'Prestige Group', 'Siemens', 'Foxconn'],
-};
+/**
+ * Esteemed clients — the roster and logos printed on the approved brochure
+ * v6.2 "Esteemed Clients" page, in the brochure's own three groups. Logos are
+ * the customer's own supplied marketing assets; do not add a client here who
+ * is not on that page.
+ */
+export interface Client {
+  name: string;
+  logo: string;
+}
 
-export const allClients = [
-  ...clients.metroAndGovernment,
-  ...clients.institutions,
-  ...clients.privateSector,
+export const clientGroups: { title: string; clients: Client[] }[] = [
+  {
+    title: 'Private sector',
+    clients: [
+      { name: "Haldiram's", logo: '/clients/haldirams.png' },
+      { name: 'Prestige Group', logo: '/clients/prestige-group.png' },
+      { name: 'DLF', logo: '/clients/dlf.png' },
+      { name: 'M3M', logo: '/clients/m3m.png' },
+      { name: 'Oberoi Realty', logo: '/clients/oberoi-realty.png' },
+      { name: 'Godrej', logo: '/clients/godrej.png' },
+      { name: 'CEAT', logo: '/clients/ceat.png' },
+      { name: 'MRF', logo: '/clients/mrf.png' },
+      { name: 'Larsen & Toubro', logo: '/clients/larsen-toubro.png' },
+      { name: 'Brigade Group', logo: '/clients/brigade-group.png' },
+      { name: 'Boeing', logo: '/clients/boeing.png' },
+      { name: 'Concorde', logo: '/clients/concorde.png' },
+      { name: 'Foxconn', logo: '/clients/foxconn.png' },
+    ],
+  },
+  {
+    title: 'Government bodies',
+    clients: [
+      { name: 'IRCTC', logo: '/clients/irctc.png' },
+      { name: 'High Court of Delhi', logo: '/clients/high-court-of-delhi.png' },
+      { name: 'Indian Navy', logo: '/clients/indian-navy.png' },
+      { name: 'IndianOil', logo: '/clients/indian-oil.png' },
+      { name: 'BSNL', logo: '/clients/bsnl.png' },
+      { name: 'AIIMS', logo: '/clients/aiims.png' },
+      { name: 'ISRO', logo: '/clients/isro.png' },
+      { name: 'NHAI', logo: '/clients/nhai.png' },
+      { name: 'Hindustan Petroleum', logo: '/clients/hindustan-petroleum.png' },
+    ],
+  },
+  {
+    title: 'Metro projects',
+    clients: [
+      { name: 'Delhi Metro', logo: '/clients/delhi-metro.png' },
+      { name: 'Namma Metro', logo: '/clients/namma-metro.png' },
+    ],
+  },
 ];
+
+export const allClients: Client[] = clientGroups.flatMap((g) => g.clients);
 
 export const manufacturing = {
   intro:
