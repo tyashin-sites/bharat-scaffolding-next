@@ -33,10 +33,15 @@ export function ProductsPreview() {
             </Reveal>
           ))}
         </div>
-        <Reveal className="mt-10 text-center">
+        <Reveal className="mt-10 flex flex-wrap justify-center gap-4">
           <Button size="lg" variant="outline" asChild>
             <Link href="/products">
               View all {products.length} products <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+          <Button size="lg" asChild>
+            <Link href="/scaffolding-on-rent#estimator">
+              Work out your material list <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </Reveal>

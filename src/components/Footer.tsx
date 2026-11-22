@@ -7,6 +7,7 @@ import { PRODUCT_GROUPS, products } from '@/data/products';
 import { offices } from '@/data/company';
 
 const companyLinks = [
+  { href: '/scaffolding-on-rent', label: 'Scaffolding on Rent' },
   { href: '/about', label: 'About Us' },
   { href: '/projects', label: 'Landmark Projects' },
   { href: '/catalog', label: 'Product Catalogue' },

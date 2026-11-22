@@ -2,13 +2,16 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { process } from '@/data/company';
 
-export function ProcessSection() {
+export function ProcessSection({
+  eyebrow = 'How we work',
+  title = 'From enquiry to pickup, one accountable process',
+}: { eyebrow?: string; title?: string } = {}) {
   return (
     <section className="py-20 md:py-28">
       <div className="container">
         <SectionHeading
-          eyebrow="How we work"
-          title="From enquiry to pickup, one accountable process"
+          eyebrow={eyebrow}
+          title={title}
         />
         <ol className="relative grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {process.map((p, i) => (

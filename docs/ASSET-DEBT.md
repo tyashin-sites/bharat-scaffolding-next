@@ -11,3 +11,4 @@
 | 7 | LinkedIn URL — brochure says "Preet Bharat Group" | **CONFIRMED by customer 2026-08-09** | cleared |
 | 8 | Domain cutover — preetbharat.com stays on the old site until user-gated cutover; SEO Co-Pilot install + ROBOTS_NOINDEX flip happen then | USER-GATED | Phase 6 |
 | 9 | Testimonials — none exist in approved sources; metric proof cards used instead. Never add quotes without written customer supply | policy | — |
+| 10 | Estimator quantity formula on `/scaffolding-on-rent` — `docs/ESTIMATOR-FORMULA.md` (rules, 3 worked examples, 8 questions) sent to the customer's technical team. Weights for jacks, platforms, toe boards and ladders are not in the brochure, so tonnage covers verticals + ledgers only | AWAITING CUSTOMER SIGN-OFF | page go-live |

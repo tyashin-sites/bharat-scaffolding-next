@@ -52,6 +52,12 @@ export default function ProductsPage() {
                 <FileDown className="mr-2 h-4 w-4" /> Download catalogue
               </Link>
             </Button>
+            <Link
+              href="/scaffolding-on-rent#estimator"
+              className="self-center text-sm font-semibold text-white/80 underline-offset-4 hover:text-white hover:underline"
+            >
+              Work out your Cuplock material list
+            </Link>
           </div>
         </div>
       </section>

@@ -20,6 +20,8 @@ type LeadPayload = {
   phone?: unknown;
   location?: unknown;
   message?: unknown;
+  /** 'estimator' when sent from the /scaffolding-on-rent material estimator. */
+  source?: unknown;
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,6 +44,7 @@ export async function POST(request: Request) {
   const phone = str(body.phone, 40);
   const location = str(body.location, 200);
   const message = str(body.message, 5000);
+  const fromEstimator = body.source === 'estimator';
 
   if (!name) {
     return NextResponse.json({ ok: false, error: 'Name is required' }, { status: 400 });
@@ -63,6 +66,7 @@ export async function POST(request: Request) {
     phone,
     location: location || undefined,
     message,
+    source: fromEstimator ? 'estimator' : 'contact',
     submittedAt: new Date().toISOString(),
   };
 
@@ -90,9 +94,11 @@ export async function POST(request: Request) {
           name,
           email,
           phone,
-          subject: `Scaffolding enquiry${company ? ` — ${company}` : ''}${location ? ` (${location})` : ''}`,
+          subject: `${fromEstimator ? 'Estimator list (indicative)' : 'Scaffolding enquiry'}${company ? ` — ${company}` : ''}${location ? ` (${location})` : ''}`,
           message,
-          source: 'bharat-scaffolding-website-contact',
+          source: fromEstimator
+            ? 'bharat-scaffolding-website-estimator'
+            : 'bharat-scaffolding-website-contact',
           pageUrl: request.headers.get('referer') || undefined,
           metadata: { company, location },
         }),

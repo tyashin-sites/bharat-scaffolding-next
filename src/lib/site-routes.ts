@@ -21,6 +21,7 @@ export interface SiteRoute {
 export function getSiteRoutes(): SiteRoute[] {
   return [
     { path: '/', priority: 1.0, changeFrequency: 'weekly' },
+    { path: '/scaffolding-on-rent', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/products', priority: 0.9, changeFrequency: 'monthly' },
     ...products.map((p) => ({
       path: `/products/${p.slug}`,

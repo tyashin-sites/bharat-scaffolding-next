@@ -20,6 +20,14 @@ npm install
 npm run dev
 ```
 
+## Test
+
+```bash
+node --experimental-strip-types --test tests/*.test.mjs
+```
+
+Pins the `/scaffolding-on-rent` estimator arithmetic (see `docs/ESTIMATOR-FORMULA.md`).
+
 ## Deploy
 
 Pushed to `main` → GitHub Actions (canonical workflow installed by the platform's `/adopt`
