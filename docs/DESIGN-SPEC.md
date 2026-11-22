@@ -85,6 +85,7 @@ Product renders appear on their oxide-red/white spec cards from the approved bro
 | `/about` | trust: 45 years, 3 generations | story, chairman's desk (Jhujhar Singh & Chandeep Singh), manufacturing (5 units, machine list), safety commitment, sustainability |
 | `/projects` | proof of national scale | landmark projects grid (9 from brochure), sectors served, client wall |
 | `/catalog` | give the brochure | download card (PDF), page highlights |
+| `/scaffolding-on-rent` | paid-search landing: "how much material do I need?" | text hero (LCP), 3D Cuplock estimator + server-rendered component table, how Cuplock goes together (links to products), process, rent-vs-buy, client logos + local project photos, FAQ (FAQPage JSON-LD), contact. Phase 2: `/[city]` variants reuse `RentLanding` |
 | `/contact` | start the enquiry | form (platform lead capture), 6 office cards with addresses, phones, email |
 | `/blog` | dormant until posts | native blog per platform pattern |
 
@@ -101,6 +102,12 @@ No ghost links; nav and footer only link built routes.
 - LCP element = hero headline (text) — no hero image blocking.
 - Brochure page images served resized/AVIF-ready via `next/image`, lazy below fold.
 - JS budget: no added deps beyond scaffold (lucide icons tree-shaken).
+- **One exception: `three` on `/scaffolding-on-rent` only.** Vanilla three + `InstancedMesh`
+  (no react-three-fiber), loaded by dynamic `import()` after the page `load` event when the
+  viewer nears the viewport or on first touch of the estimator; ~135 KB gzipped in its own
+  chunk, never in the initial bundle. Until then a server-rendered isometric SVG stands in.
+  DPR capped at 1.5; reduced motion = static view, no build animation, no auto-rotate.
+  This is a configurator, not decoration — the "3D tilt" ban above still holds.
 - Catalogue PDF < 25 MiB (CF static asset cap) — compressed from the 39 MB master.
 
 ## Facts discipline

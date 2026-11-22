@@ -89,6 +89,8 @@ export interface PageGraphOptions {
   };
   /** ItemList of links (e.g. the products index). */
   itemList?: { name: string; path: string }[];
+  /** Visible FAQ on the page, emitted as a FAQPage node. Must match the page text. */
+  faq?: { q: string; a: string }[];
 }
 
 export function buildGraph(opts: PageGraphOptions = {}): SchemaNode {
@@ -130,6 +132,19 @@ export function buildGraph(opts: PageGraphOptions = {}): SchemaNode {
           position: i + 1,
           name: item.name,
           url: siteUrl(item.path),
+        })),
+      });
+    }
+
+    if (opts.faq && opts.faq.length > 0) {
+      nodes.push({
+        '@type': 'FAQPage',
+        '@id': `${pageUrl}#faq`,
+        isPartOf: { '@id': `${pageUrl}#webpage` },
+        mainEntity: opts.faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
         })),
       });
     }

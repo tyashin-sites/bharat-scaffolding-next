@@ -7,6 +7,7 @@ import { ProductCard } from '@/components/ProductCard';
 import { pageMetadata } from '@/lib/seo';
 import { siteConfig } from '@/config/site';
 import { PRODUCT_GROUPS, products } from '@/data/products';
+import { ESTIMATOR_SIGNED_OFF } from '@/config/launch-gates';
 
 export const metadata = pageMetadata({
   title: 'Products — Scaffolding, Shuttering & Formwork Systems',
@@ -52,6 +53,14 @@ export default function ProductsPage() {
                 <FileDown className="mr-2 h-4 w-4" /> Download catalogue
               </Link>
             </Button>
+            {ESTIMATOR_SIGNED_OFF && (
+              <Link
+                href="/scaffolding-on-rent#estimator"
+                className="self-center text-sm font-semibold text-white/80 underline-offset-4 hover:text-white hover:underline"
+              >
+                Work out your Cuplock material list
+              </Link>
+            )}
           </div>
         </div>
       </section>

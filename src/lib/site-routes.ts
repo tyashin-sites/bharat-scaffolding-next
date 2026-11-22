@@ -1,4 +1,5 @@
 import { products } from '@/data/products';
+import { ESTIMATOR_SIGNED_OFF } from '@/config/launch-gates';
 
 /**
  * ONE source of truth for the site's indexable routes.
@@ -21,6 +22,10 @@ export interface SiteRoute {
 export function getSiteRoutes(): SiteRoute[] {
   return [
     { path: '/', priority: 1.0, changeFrequency: 'weekly' },
+    // Held out of the sitemap until the estimator formula is signed off.
+    ...(ESTIMATOR_SIGNED_OFF
+      ? [{ path: '/scaffolding-on-rent', priority: 0.9, changeFrequency: 'monthly' as const }]
+      : []),
     { path: '/products', priority: 0.9, changeFrequency: 'monthly' },
     ...products.map((p) => ({
       path: `/products/${p.slug}`,
