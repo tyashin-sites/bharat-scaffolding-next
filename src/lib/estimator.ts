@@ -316,11 +316,11 @@ export function estimateMessage(e: Estimate, note?: string): string {
   }
   lines.push('');
   lines.push(
-    `Indicative tonnage (verticals + ledgers, brochure weights): ${tonnes(e.knownKg)} t`
+    e.unweighed.length
+      ? `PARTIAL tonnage, verticals + ledgers only (brochure weights): ${tonnes(e.knownKg)} t. ` +
+          `NOT included: ${e.unweighed.join(', ')} (no brochure weight). The full load is higher; do not plan transport on this figure.`
+      : `Indicative tonnage (brochure weights): ${tonnes(e.knownKg)} t`
   );
-  if (e.unweighed.length) {
-    lines.push(`Not in tonnage (no brochure weight): ${e.unweighed.join(', ')}`);
-  }
   if (note && note.trim()) {
     lines.push('');
     lines.push(`Notes from the visitor: ${note.trim()}`);

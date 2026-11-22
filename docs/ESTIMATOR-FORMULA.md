@@ -31,7 +31,7 @@ Please check the rules and the three examples, answer the questions at the end, 
    - **walkway platforms** = L × W × (number of 300 mm platforms that fit across one bay: 4 for 1.2 m, 5 for 1.5 m, 6 for 1.8 m, 6 for 2.0 m), each the bay length;
    - **toe boards** = 2 × (L + W), round the deck edge, each the bay length;
    - **access ladders (3.0 m)** = one per lift, in one access bay.
-8. **Tonnage** = quantity × brochure weight, for vertical standards (2.25 to 13.50 kg) and ledgers (5.10 / 6.30 / 7.40 / 8.20 kg for 1.2 / 1.5 / 1.8 / 2.0 m). Brochure v6.2 prints no weight for base jacks, U-heads, platforms, toe boards or ladders, so they are counted but **not** in the tonnage, and the page says so.
+8. **Tonnage** = quantity × brochure weight, for vertical standards (2.25 to 13.50 kg) and ledgers (5.10 / 6.30 / 7.40 / 8.20 kg for 1.2 / 1.5 / 1.8 / 2.0 m). Brochure v6.2 prints no weight for base jacks, U-heads, platforms, toe boards or ladders, so they are counted but **not** in the tonnage. The tonnage row itself is labelled partial and names what is left out, and the enquiry email says the same on its tonnage line.
 9. **Not included:** guardrails above the deck, bracing, ties to the structure, couplers, spare material.
 
 ## Worked example A: access scaffold along a facade
@@ -93,4 +93,6 @@ Support, 1.2 m bays, 4 × 4 bays, 4.0 m to the top of the posts.
 7. **Weights:** can you supply per-piece weights for base jacks, U-heads, platforms, toe boards and ladders, so the tonnage can include them?
 8. Anything else a contractor usually forgets that the list should carry (bracing, couplers, spares)?
 
-Once approved, the page goes live on the preview site and moves with the domain cutover.
+Until this is approved the page is deployed but hidden: reachable by direct link only, not linked from the home page, `/products` or the footer, not in the sitemap, marked `noindex`, and no ads point at it. It does **not** go live with the domain cutover. After written approval, `ESTIMATOR_SIGNED_OFF` in `src/config/launch-gates.ts` is set to `true`, which turns all of that on in one change.
+
+If you can answer only one question, please make it question 7: those weights turn the partial tonnage into a complete one.

@@ -5,9 +5,10 @@ import { getLegalConfig } from '@/lib/legal';
 import { siteConfig } from '@/config/site';
 import { PRODUCT_GROUPS, products } from '@/data/products';
 import { offices } from '@/data/company';
+import { ESTIMATOR_SIGNED_OFF } from '@/config/launch-gates';
 
 const companyLinks = [
-  { href: '/scaffolding-on-rent', label: 'Scaffolding on Rent' },
+  ...(ESTIMATOR_SIGNED_OFF ? [{ href: '/scaffolding-on-rent', label: 'Scaffolding on Rent' }] : []),
   { href: '/about', label: 'About Us' },
   { href: '/projects', label: 'Landmark Projects' },
   { href: '/catalog', label: 'Product Catalogue' },

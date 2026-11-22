@@ -268,10 +268,20 @@ export function Estimator({ catalogue }: { catalogue: Catalogue }) {
             <tfoot>
               <tr className="border-border bg-brick-tint border-t">
                 <th scope="row" colSpan={3} className="px-4 py-3 font-semibold">
-                  Indicative tonnage, verticals and ledgers
+                  Partial tonnage: verticals and ledgers only
+                  {result.unweighed.length > 0 && (
+                    <span className="text-brick mt-1 block text-xs font-semibold">
+                      Not included: {result.unweighed.join(', ').toLowerCase()}. The brochure
+                      prints no weight for these, so the full load is higher than this figure.
+                      Do not plan transport on it.
+                    </span>
+                  )}
                 </th>
-                <td className="px-4 py-3 text-right font-extrabold tabular-nums">
+                <td className="px-4 py-3 text-right align-top font-extrabold tabular-nums">
                   {tonnes(result.knownKg)} t
+                  {result.unweighed.length > 0 && (
+                    <span className="text-brick block text-xs font-semibold">partial</span>
+                  )}
                 </td>
               </tr>
             </tfoot>

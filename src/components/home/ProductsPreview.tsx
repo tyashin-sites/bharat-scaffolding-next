@@ -5,6 +5,7 @@ import { SectionHeading } from '@/components/SectionHeading';
 import { Reveal } from '@/components/Reveal';
 import { ProductCard } from '@/components/ProductCard';
 import { products } from '@/data/products';
+import { ESTIMATOR_SIGNED_OFF } from '@/config/launch-gates';
 
 const FEATURED_SLUGS = [
   'cuplock-vertical-standard',
@@ -39,11 +40,13 @@ export function ProductsPreview() {
               View all {products.length} products <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-          <Button size="lg" asChild>
-            <Link href="/scaffolding-on-rent#estimator">
-              Work out your material list <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+          {ESTIMATOR_SIGNED_OFF && (
+            <Button size="lg" asChild>
+              <Link href="/scaffolding-on-rent#estimator">
+                Work out your material list <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          )}
         </Reveal>
       </div>
     </section>

@@ -106,3 +106,11 @@ test('the enquiry message is labelled indicative and carries no price', () => {
   assert.doesNotMatch(msg, /₹|Rs\.?\s?\d|INR|price|rate/i);
   assert.ok(msg.length < 5000, 'fits the /api/contact message limit');
 });
+
+test('the tonnage line in the enquiry says it is partial and names what is left out', () => {
+  const msg = estimateMessage(estimate({}, cat));
+  const line = msg.split('\n').find((l) => /tonnage/i.test(l));
+  assert.match(line, /^PARTIAL tonnage, verticals \+ ledgers only/);
+  assert.match(line, /NOT included: .*Steel walkway platform/);
+  assert.match(line, /do not plan transport on this figure/);
+});
